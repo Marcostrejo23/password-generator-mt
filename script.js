@@ -4,7 +4,7 @@ var capalpha =["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","
 var number = ["1","2","3","4","5","6","7","8","9","0"];
 var response =["yes","no"]
 var charcount=["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"];
-var inclue = '';
+var include = '';
 
 var generateBtn = document.querySelector("#generate");
 
@@ -35,12 +35,15 @@ var generateBtn = document.querySelector("#generate");
         alert("okay closing window.")
         return false 
       }
-      var passlength = prompt("how many chracters? 8-16."); 
-      if (user== NaN){
-        alert("that not a number")
-        return false 
-      }     
-      var passint = parseInt(passlength)
+      var passLength = prompt("how many chracters? 8-16.")
+      if (passLength < 8){
+        alert("password must be longer");
+      }else if (passLength > 16){
+       alert("password must be under 16 characters");
+      } else (passLength < 16 && passLength > 8)
+     
+      
+      var passint = parseInt(passLength)
       //how long?
       //do you want special characters?
       var specialcharacters = confirm("would you like special characters?");
