@@ -4,7 +4,6 @@ var capAlphabet =["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P
 var number = ["1","2","3","4","5","6","7","8","9","0"];
 var response =["yes","no"]
 var characterCount = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"];
-var include = '';
 
 var generateBtn = document.querySelector("#generate");
 
@@ -21,13 +20,6 @@ var generateBtn = document.querySelector("#generate");
 // }
 
   generateBtn.addEventListener("click", writePassword);
-
-  // if (user === "yes"){ 
-  //   if (characterCount  < "8" && characterCount  > "16"); 
-  //   window.prompt("that is not enough characters");
-  // } else if (characterCount  = true); 
-  // if (user === "yes"){
-  //   else ()
     
     function writePassword() {
       var user = confirm("Would you like to make a password?");
@@ -43,25 +35,48 @@ var generateBtn = document.querySelector("#generate");
           alert("password must be under 16 characters");
         } 
       } while (passLength < 8 || passLength > 16);
-     
-      
-      var passInt = parseInt(passLength)
-      //how long?
-      //do you want special characters?
-      var specialcharacters = confirm("would you like special characters?");
-      var passalphabetcap = confirm("would you like uppercase characters?");
-      //do you want capital letters?
-      //do you want capital letters?
+      var specialCharacters = confirm("would you like special characters?");
+      var capAlpha = confirm("would you like uppercase characters?");
+      var include = '';
+      var total = '';
 
-      // var password = generatePassword();
-      var passwordText = document.querySelector("#password");
-      function randomGen(alphabet , special , capAlphabet , number){
-      var randIndex = Math.floor(Math.random() * Array.length);
-      var randElement = Array[randIndex];
-    
-      return randElement;
-    
+      // var passInt = parseInt(passLength);
+
+      if (!passLength && !specialCharacters && !capAlpha){
+        result += "does not meet the criteria to generate a password";
+        return include
+      } else
+        if (specialCharacters) {
+         total = total + specialCharacters;
+      } if (capAlpha) {
+        total = total +capAlpha; 
       }
-      passwordText.value = password;
+      for (let i = 0; i < passLength.length; i++) {
+        include += total.charAt(Math.floor(Math.random() * total.length)); 
+      } 
+      return total;
+
+
+ 
+
+  
+
+
+      // var passwordText = document.querySelector("#password");
+      
+      // function randomGen(alphabet , special , capAlphabet , number){
+      // var randIndex = Math.floor(Math.random() * Array.length);
+      // var randElement = Array[randIndex];
     
+      // return randElement;
+    
+      // }
+      // passwordText.value = password;
+    
+      function createPassword() {
+        var password = writePassword();
+        var passwordText = document.querySelector("#password");
+        passwordText.value = password;
+      };
+      generateBtn.addEventListener("click", createPassword);
     };
