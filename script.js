@@ -16,21 +16,20 @@ var generateBtn = document.querySelector("#generate");
         return false 
       }
       do{ 
-        var passLength = parseInt(prompt("how many chracters? 8-16."))
+        var passLength = parseInt(prompt("how many characters? 8-16."))
         if (passLength < 8){
           alert("password must be longer");
         }else if (passLength > 16){
           alert("password must be under 16 characters");
         } 
       } while (passLength < 8 || passLength > 16);
+      var alpha = confirm("would you like lowercase letters?");
       var specialCharacters = confirm("would you like special characters?");
       var capAlpha = confirm("would you like uppercase characters?");
       var include = '';
       var total = '';
 
-
-
-      if (!passLength && !specialCharacters && !capAlpha){
+      if (!alpha &&!passLength && !specialCharacters && !capAlpha){
         alert("does not meet the criteria to generate a password");
   
       } else{
@@ -38,6 +37,8 @@ var generateBtn = document.querySelector("#generate");
          total = total + special.join('');
       } if (capAlpha) {
         total = total + capAlphabet.join(''); 
+      } if (alpha){
+        total = total + alphabet.join('');
       }
       console.log(total)
       for (let i = 0; i < passLength; i++) {
